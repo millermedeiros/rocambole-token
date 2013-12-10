@@ -4,7 +4,7 @@
   "description": "Helpers for rocambole AST token manipulation",
   "main": "lib/token.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine-node test/"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,10 @@
     "url": "https://github.com/millermedeiros/rocambole-token/issues"
   },
   "homepage": "https://github.com/millermedeiros/rocambole-token",
-  "devDependencies": {},
+  "devDependencies": {
+    "rocambole": "~0.2.3",
+    "jasmine-node": "~1.11.0"
+  },
   "jshintConfig": {
     "node": true
   }

@@ -4,7 +4,7 @@ module.exports = makeArrayCheck;
 
 function makeArrayCheck(arr) {
   return function(node) {
-    return node && arr.indexOf(node.type) !== -1;
+    return node && (arr.indexOf(node.type) !== -1 || arr.indexOf(node.value) !== -1);
   };
 }
 
