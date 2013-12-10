@@ -1,0 +1,25 @@
+{
+  "name": "rocambole-token",
+  "version": "0.0.0",
+  "description": "Helpers for rocambole AST token manipulation",
+  "main": "lib/token.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/millermedeiros/rocambole-token.git"
+  },
+  "keywords": [
+    "ast",
+    "token",
+    "rocambole"
+  ],
+  "author": "Miller Medeiros <contact@millermedeiros.com> (http://blog.millermedeiros.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/millermedeiros/rocambole-token/issues"
+  },
+  "homepage": "https://github.com/millermedeiros/rocambole-token",
+  "devDependencies": {}
+}
