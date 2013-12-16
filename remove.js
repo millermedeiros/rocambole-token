@@ -94,6 +94,12 @@ function removeEmptyAdjacentBefore(startToken) {
 }
 
 
+exports.removeEmptyAdjacentAfter = removeEmptyAdjacentAfter;
+function removeEmptyAdjacentAfter(startToken) {
+  removeAdjacentAfter(startToken, isEmpty);
+}
+
+
 exports.removeEmptyInBetween = removeEmptyInBetween;
 function removeEmptyInBetween(startToken, endToken) {
   removeInBetween(startToken, endToken, isEmpty);
