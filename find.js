@@ -1,6 +1,6 @@
 "use strict";
 
-var makeArrayCheck = require('./makeArrayCheck');
+var makeCheck = require('./makeCheck');
 var isNotEmpty = require('./is').isNotEmpty;
 
 
@@ -9,16 +9,10 @@ var isNotEmpty = require('./is').isNotEmpty;
 
 exports.findInBetween = findInBetween;
 function findInBetween(startToken, endToken, check) {
-  if (Array.isArray(check)) {
-    check = makeArrayCheck(check);
-  }
+  check = makeCheck(check);
   var found;
   while (startToken && startToken !== endToken.next && !found) {
-    if (typeof check === 'function') {
-      if (check(startToken)) {
-        found = startToken;
-      }
-    } else if (startToken.type === check || startToken.value === check) {
+    if (check(startToken)) {
       found = startToken;
     }
     startToken = startToken.next;
@@ -29,13 +23,10 @@ function findInBetween(startToken, endToken, check) {
 
 exports.findInBetweenFromEnd = findInBetweenFromEnd;
 function findInBetweenFromEnd(startToken, endToken, check) {
+  check = makeCheck(check);
   var found;
   while (endToken && endToken !== startToken.prev && !found) {
-    if (typeof check === 'function') {
-      if (check(endToken)) {
-        found = endToken;
-      }
-    } else if (endToken.type === check || endToken.value === check) {
+    if (check(endToken)) {
       found = endToken;
     }
     endToken = endToken.prev;
@@ -46,16 +37,10 @@ function findInBetweenFromEnd(startToken, endToken, check) {
 
 exports.findNext = findNext;
 function findNext(startToken, check) {
-  if (Array.isArray(check)) {
-    check = makeArrayCheck(check);
-  }
+  check = makeCheck(check);
   startToken = startToken ? startToken.next : null;
   while (startToken) {
-    if (typeof check === 'function') {
-      if (check(startToken)) {
-        return startToken;
-      }
-    } else if (startToken.type === check || startToken.value === check) {
+    if (check(startToken)) {
       return startToken;
     }
     startToken = startToken.next;
@@ -65,16 +50,10 @@ function findNext(startToken, check) {
 
 exports.findPrev = findPrev;
 function findPrev(endToken, check) {
-  if (Array.isArray(check)) {
-    check = makeArrayCheck(check);
-  }
+  check = makeCheck(check);
   endToken = endToken ? endToken.prev : null;
   while (endToken) {
-    if (typeof check === 'function') {
-      if (check(endToken)) {
-        return endToken;
-      }
-    } else if (endToken.type === check || endToken.value === check) {
+    if (check(endToken)) {
       return endToken;
     }
     endToken = endToken.prev;

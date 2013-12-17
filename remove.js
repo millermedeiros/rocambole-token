@@ -1,6 +1,6 @@
 "use strict";
 
-var makeArrayCheck = require('./makeArrayCheck');
+var makeCheck = require('./makeCheck');
 var isEmpty = require('./is').isEmpty;
 
 
@@ -25,15 +25,9 @@ function remove(target) {
 
 exports.removeInBetween = removeInBetween;
 function removeInBetween(startToken, endToken, check) {
-  if (Array.isArray(check)) {
-    check = makeArrayCheck(check);
-  }
+  check = makeCheck(check);
   while (startToken && startToken !== endToken.next) {
-    if (typeof check === 'function') {
-      if (check(startToken)) {
-        remove(startToken);
-      }
-    } else if (startToken.type === check || startToken.value === check) {
+    if (check(startToken)) {
       remove(startToken);
     }
     startToken = startToken.next;
@@ -50,40 +44,22 @@ function removeAdjacent(token, check) {
 
 exports.removeAdjacentBefore = removeAdjacentBefore;
 function removeAdjacentBefore(token, check) {
-  if (Array.isArray(check)) {
-    check = makeArrayCheck(check);
-  }
+  check = makeCheck(check);
   var prev = token.prev;
-  if (typeof check === 'function') {
-    while (prev && check(prev)) {
-      remove(prev);
-      prev = prev.prev;
-    }
-  } else {
-    while (prev && (prev.type === check || prev.value === check)) {
-      remove(prev);
-      prev = prev.prev;
-    }
+  while (prev && check(prev)) {
+    remove(prev);
+    prev = prev.prev;
   }
 }
 
 
 exports.removeAdjacentAfter = removeAdjacentAfter;
 function removeAdjacentAfter(token, check) {
-  if (Array.isArray(check)) {
-    check = makeArrayCheck(check);
-  }
+  check = makeCheck(check);
   var next = token.next;
-  if (typeof check === 'function') {
-    while (next && check(next)) {
-      remove(next);
-      next = next.next;
-    }
-  } else {
-    while (next && (next.type === check || next.value === check)) {
-      remove(next);
-      next = next.next;
-    }
+  while (next && check(next)) {
+    remove(next);
+    next = next.next;
   }
 }
 
