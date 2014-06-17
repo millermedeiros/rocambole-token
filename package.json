@@ -1,8 +1,8 @@
 {
   "name": "rocambole-token",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Helpers for rocambole AST token manipulation",
-  "main": "lib/token.js",
+  "main": "./index.js",
   "scripts": {
     "test": "jasmine-node test/"
   },
