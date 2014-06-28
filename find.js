@@ -11,7 +11,8 @@ exports.findInBetween = findInBetween;
 function findInBetween(startToken, endToken, check) {
   check = makeCheck(check);
   var found;
-  while (startToken && startToken !== endToken.next && !found) {
+  var last = endToken && endToken.next;
+  while (startToken && startToken !== last && !found) {
     if (check(startToken)) {
       found = startToken;
     }
@@ -25,7 +26,8 @@ exports.findInBetweenFromEnd = findInBetweenFromEnd;
 function findInBetweenFromEnd(startToken, endToken, check) {
   check = makeCheck(check);
   var found;
-  while (endToken && endToken !== startToken.prev && !found) {
+  var last = startToken && startToken.prev;
+  while (endToken && endToken !== last && !found) {
     if (check(endToken)) {
       found = endToken;
     }
@@ -38,7 +40,7 @@ function findInBetweenFromEnd(startToken, endToken, check) {
 exports.findNext = findNext;
 function findNext(startToken, check) {
   check = makeCheck(check);
-  startToken = startToken ? startToken.next : null;
+  startToken = startToken && startToken.next;
   while (startToken) {
     if (check(startToken)) {
       return startToken;
@@ -51,7 +53,7 @@ function findNext(startToken, check) {
 exports.findPrev = findPrev;
 function findPrev(endToken, check) {
   check = makeCheck(check);
-  endToken = endToken ? endToken.prev : null;
+  endToken = endToken && endToken.prev;
   while (endToken) {
     if (check(endToken)) {
       return endToken;

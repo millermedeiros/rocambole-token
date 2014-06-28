@@ -26,7 +26,8 @@ function remove(target) {
 exports.removeInBetween = removeInBetween;
 function removeInBetween(startToken, endToken, check) {
   check = makeCheck(check);
-  while (startToken && startToken !== endToken.next) {
+  var last = endToken && endToken.next;
+  while (startToken && startToken !== last) {
     if (check(startToken)) {
       remove(startToken);
     }

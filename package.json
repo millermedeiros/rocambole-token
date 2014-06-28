@@ -1,6 +1,6 @@
 {
   "name": "rocambole-token",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Helpers for rocambole AST token manipulation",
   "main": "./index.js",
   "scripts": {

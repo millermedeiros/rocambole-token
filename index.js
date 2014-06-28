@@ -15,7 +15,8 @@ function mixIn(target, source){
 
 exports.eachInBetween = eachInBetween;
 function eachInBetween(startToken, endToken, iterator) {
-  while (startToken && startToken !== endToken.next) {
+  var last = endToken && endToken.next;
+  while (startToken && startToken !== last) {
     iterator(startToken);
     startToken = startToken.next;
   }
