@@ -10,6 +10,7 @@ function before(target, newToken) {
     target.root.startToken = newToken;
   }
   target.prev = newToken;
+  return newToken;
 }
 
 
@@ -23,5 +24,6 @@ function after(target, newToken) {
   newToken.prev = target;
   newToken.next = target.next;
   target.next = newToken;
+  return newToken;
 }
 
